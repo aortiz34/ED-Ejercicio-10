@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ruta de camiones</h2>
+    <form>
+        <h3>Registro de bases</h3>
+        <div>
+            <label>Nombre:</label>
+            <input id="textName" type="text">
+        </div>
+        <div>
+            <label>Minutos:</label>
+            <input id="numberMinutes" type="number" >
+        </div>
+        <h3>Creación de tarjeta</h3>
+        <div>
+            <label>Base inicio:</label>
+            <input id="textBase" type="text">
+        </div>
+        <div>
+            <label>Hora de inicio:</label>
+            <input id="numberTime" type="number">
+        </div>
+        <div>
+            <label>Tiempo de recorrido:</label>
+            <input id="numberDuration" type="number">
+        </div>
+        <div>
+            <input id="btnAdd" type="button" value="Agregar">
+            <input id="btnDelete" type="button" value="Eliminar">
+            <input id="btnList" type="button" value="Listar">
+            <input id="btnListInv" type="button" value="Crear tarjeta">
+        </div>
+    </form>
+    <h3>Movimientos:</h3>
+    <div id="detail"></div>
+    <script src="main.js" type="module"></script>
+</body>
+</html>
