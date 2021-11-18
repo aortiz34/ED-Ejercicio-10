@@ -37,7 +37,7 @@ class App{
 
    _delete= () => {
     let name = document.getElementById("textName");
-    let elim = this._route.deleteBase(name.value);
+    let elim = this._route.deleteBase(name.value.toUpperCase());
     if (elim) {
         this._div.innerHTML = `Se eliminó el producto. </n>
         ${elim.getInfo()}`;

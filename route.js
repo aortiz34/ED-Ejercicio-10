@@ -57,4 +57,42 @@ export default class Route{
             return aux.getInfo() + this._addToList(aux.getNext());
         }
     }
+
+    deleteBase(name){
+        if (this._inicio == null) {
+            return null;
+        }else{
+            let elim = null;
+            if (name == this._inicio.getName()){
+                if (this._inicio.getNext() != this._inicio){
+                elim = this._inicio;
+                this._inicio.getPrevious().setNext(this._inicio.getNext());
+                this._inicio.getNext().setPrevious(this._inicio.getPrevious());
+                this._inicio = this._inicio.getNext();
+                elim.setNext(null);
+                elim.setPrevious(null);
+                return elim;
+                }else{
+                elim = this._inicio;
+                this._inicio = null;
+                return elim;
+                }
+            }else{
+                let aux = this._inicio.getNext();
+                while (aux != this._inicio) {
+                    if (aux.getName() == name){
+                        elim = aux;
+                        aux.getPrevious().setNext(aux.getNext())
+                        aux.getNext().setPrevious(aux.getPrevious());
+                        elim.setNext(null);
+                        elim.setPrevious(null);
+                        return elim;
+                    }else{
+                        aux = aux.getNext();
+                        }
+                }
+                return elim;
+            }
+        }
+    }
 }
