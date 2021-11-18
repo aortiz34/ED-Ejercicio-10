@@ -1,6 +1,6 @@
 export default class Base {
     constructor(name,duration) {
-        this._name = name;
+        this._name = name.toUpperCase();
         this._duration = duration;
         this._next = null;
         this._previous = null;
@@ -28,5 +28,11 @@ export default class Base {
 
     getDuration(){
         return this._duration;
+    }
+
+    getInfo(){
+        return `<div>
+        ${this._name}-${this._duration}
+        </div>`;
     }
 }
