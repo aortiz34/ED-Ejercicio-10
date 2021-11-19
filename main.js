@@ -31,23 +31,39 @@ class App{
    }
 
    _list= () =>{
-    this._div.innerHTML = this._route.listBases();
-    return;
+        this._div.innerHTML = this._route.listBases();
+        return;
    }
 
    _delete= () => {
-    let name = document.getElementById("textName");
-    let elim = this._route.deleteBase(name.value.toUpperCase());
-    if (elim) {
-        this._div.innerHTML = `Se eliminó el producto. </n>
-        ${elim.getInfo()}`;
-        name.value = "";
-        return;
-    }else{
-     this._div.innerHTML = `No se encontró el producto.`;
-     name.value = "";
-     return;
-    }
+        let name = document.getElementById("textName");
+        let elim = this._route.deleteBase(name.value.toUpperCase());
+        if (elim) {
+            this._div.innerHTML = `Se eliminó el producto. </n>
+            ${elim.getInfo()}`;
+            name.value = "";
+            return;
+        }else{
+            this._div.innerHTML = `No se encontró el producto.`;
+            name.value = "";
+            return;
+        }
+   }
+
+   _Card= () => {
+       let base = document.getElementById("textBase").value.toUpperCase();
+       let hora = document.getElementById("numberTime").value;
+       let tiempo = document.getElementById("numberDuration").value;
+       let date = new Date(2021, 11, 26, hora);
+       if(base&&hora&&tiempo){
+            document.getElementById("textBase").value = "";
+            document.getElementById("numberTime").value = "";
+            document.getElementById("numberDuration").value = "";
+            this._div.innerHTML = this._route.createCard(base,date,tiempo);
+        }else{
+            this._div.innerHTML = `La tarjeta no se creó`;
+            return;
+        }
    }
 }
 

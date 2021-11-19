@@ -95,4 +95,40 @@ export default class Route{
             }
         }
     }
+
+    createCard(base,date,minutes){
+        let contador = 1;
+        let txt = `<div>
+        ${contador}-${base}-${date.getHours()}:0${date.getMinutes()}
+        </div>`;
+        let baseInicio = this.searchBase(base);
+        if (baseInicio != null) {
+            let aux = baseInicio.getNext();
+            while (minutes > 0) {
+               let duration = Number(aux.getDuration());
+               minutes -= duration;
+               if (minutes < 0) {
+                   return txt;
+               }else{
+                   contador ++;
+                    date.setMinutes(date.getMinutes() + duration);
+                    let minutos = date.getMinutes();
+                    if(minutos < 10 ){
+                        txt += `<div>
+                        ${contador}-${aux.getName()}-${date.getHours()}:0${date.getMinutes()}
+                        </div>`;
+                    }else{
+                        txt += `<div>
+                        ${contador}-${aux.getName()}-${date.getHours()}:${date.getMinutes()}
+                        </div>`;
+                    }
+                    aux = aux.getNext();
+               }
+
+            }
+            return txt;
+        }else{
+            return `No existe esa base`;
+        }
+    }
 }
